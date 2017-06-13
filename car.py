@@ -1,12 +1,13 @@
 class Car(object):
-    doors=0
-    wheels=0
+    #doors=0
+    #wheels=0
 
-    def __init__(self,name='General',model='GM',type='saloon'):
+    def __init__(self,name='General',model='GM',type='saloon',speed=0):
         self.name = name
         self.model= model
         self.type = type
-    #   self.speed = 0
+        self.speed =speed
+
         if (self.name =='Porshe') | (self.name=='Koenigsegg'):
             doors=2
         else:
@@ -19,14 +20,22 @@ class Car(object):
             wheels= 8
 
         self.num_of_wheels = wheels
-    #
-    # def drive(self,time):
-    #     acc=0
-    #     acc1= 10
-    #     acc2= 1000/3
-    #     drive_speed=acc*time
-    #     return Car(self.name,self.model,self.vtye,drive_speed)
-    #
+
+
+
+    def drive(self,time):
+        if self.type == 'saloon':
+            drive_speed= (1000/3)*time
+        else:
+            drive_speed = 11*time
+
+        self.speed=drive_speed
+
+
+        return Car(self.name,self.model,self.type, drive_speed)
+
+
+
     def is_saloon(self):
         if self.type =='saloon':
             return True
